@@ -1,33 +1,35 @@
 import sys
+from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QPainter, QColor
 from random import randint
-from PyQt5 import uic
 
 
 class Example(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        uic.loadUi('ui.ui', self)
+        self.flag = False
+        self.pushButton.clicked.connect(self.run)
 
-    def initUI(self):
-        self.setGeometry(400, 400, 400, 400)
-        self.setWindowTitle('Рисование')
-        self.show()
+    def run(self):
+        self.flag = True
+        self.update()
+
 
     def paintEvent(self, event):
-        qp = QPainter()
-        qp.begin(self)
-        self.circle(qp)
-        qp.end()
-
-    def circle(self, qp):
-        n = randint(2, 100)
-        qp.setBrush(QColor(255, 255, 0))
-        qp.drawEllipse(randint(0, 300), randint(0, 300), n, n)
+        if self.flag:
+            painter = QPainter()
+            painter.begin(self)
+            painter.setPen(QColor('#fafa00'))
+            painter.setBrush(QColor(250, 250, 0))
+            n = randint(2, 100)
+            painter.drawEllipse(randint(0, 300), randint(0, 300), n, n)
+            painter.end()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Example()
+    ex.show()
     sys.exit(app.exec_())
