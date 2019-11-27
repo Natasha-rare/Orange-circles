@@ -1,4 +1,5 @@
 import sys
+
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QPainter, QColor
@@ -15,7 +16,6 @@ class Example(QWidget):
     def run(self):
         self.flag = True
         self.update()
-
 
     def paintEvent(self, event):
         if self.flag:
