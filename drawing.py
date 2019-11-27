@@ -21,8 +21,8 @@ class Example(QWidget):
         if self.flag:
             painter = QPainter()
             painter.begin(self)
-            painter.setPen(QColor('#fafa00'))
-            painter.setBrush(QColor(250, 250, 0))
+            painter.setPen(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
+            painter.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
             n = randint(2, 100)
             painter.drawEllipse(randint(0, 300), randint(0, 300), n, n)
             painter.end()
