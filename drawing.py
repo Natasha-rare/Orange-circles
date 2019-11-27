@@ -8,7 +8,7 @@ from random import randint
 class Example(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('ui.ui', self)
+        uic.loadUi('UI.ui', self)
         self.flag = False
         self.pushButton.clicked.connect(self.run)
 
